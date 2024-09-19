@@ -7,12 +7,18 @@ void add(int a, int b){
 }
 
 int main(int argc, char *argv[]){
+    
+    char *endptr1, *endptr2;
+    
     // convert arguments to floategers
-    int a = atoi(argv[1]);
-    int b = atoi(argv[2]);
-    // call add function
-    add(a,b);
+    long a = strtol(argv[1], &endptr1, 10);
+    long b = strtol(argv[2], &endptr2, 10);
+    
+    if (endptr1 != argv[1] && endptr2 != argv[2]){
+        // call add function
+        add(a,b);
     return 0;
+    }
 }
 
 // gcc -o add add.c && ./add 1 2
